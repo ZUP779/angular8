@@ -4,8 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
-import { MatTableModule, MatIconModule, MatButtonModule} from '@angular/material';
+import { FormsModule} from '@angular/forms';
+import { MatDialogModule } from '@angular/material';
+import { MatTableModule, MatIconModule, MatButtonModule, MatSortModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule} from '@angular/material/input';
 import { EmployeeComponent } from './employee/employee.component';
@@ -41,11 +44,16 @@ import { DepartmentService} from './services/department.service';
     MatIconModule,
     MatTableModule,
     MatButtonModule,
+    HttpClientModule,
+    MatSortModule,
+    MatDialogModule,
+    FormsModule,
   ],
   providers: [
     EmployeeService,
     DepartmentService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddDepComponent]
 })
 export class AppModule { }
