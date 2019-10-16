@@ -17,7 +17,11 @@ export class ShowDepComponent implements OnInit {
   constructor(
     private service: DepartmentService,
     private dialog: MatDialog,
-  ) { }
+  ) {
+    this.service.listen().subscribe(
+      (m: any) => {console.log(m); this.refreshDepartmentList(); }
+    );
+  }
 
   @ViewChild(MatSort, null) sort: MatSort;
 
