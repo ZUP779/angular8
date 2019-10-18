@@ -23,7 +23,9 @@ export class DepartmentService {
   addDepartment(dep: Department) {
     return this.http.post(this.APIUrl + '/department.json', dep);
   }
-
+  deleteDepartment(id: number){
+    return this.http.delete(this.APIUrl+"/department.json" + id);
+  }
   listen(): Observable<any> {
     return this._listners.asObservable();
   }

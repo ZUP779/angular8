@@ -5,6 +5,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { Department } from 'src/app/Models/department-model';
 
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-show-dep',
   templateUrl: './show-dep.component.html',
@@ -17,6 +18,7 @@ export class ShowDepComponent implements OnInit {
   constructor(
     private service: DepartmentService,
     private dialog: MatDialog,
+    private snackBar: MatSnackBar,
   ) {
     this.service.listen().subscribe(
       (m: any) => {console.log(m); this.refreshDepartmentList(); }
@@ -57,7 +59,29 @@ export class ShowDepComponent implements OnInit {
   }
 
   onDelete(depID: number) {
-    console.log(depID);
+    // console.log(depID);
+    // if( confirm("Sure to delete?")){
+    //   this.service.deleteDepartment(depID).subscribe(
+    //     res => {
+    //       this.refreshDepartmentList();
+    //       this.snackBar.open(res.toString(), '', {
+    //         duration: 5000,
+    //         verticalPosition: 'top'
+    //       });
+    //     }
+    //   );
+    // }
+    if( confirm("Sure to delete?")){
+      //this.service.deleteDepartment(depID).subscribe(
+        // res => {
+          this.refreshDepartmentList();
+          this.snackBar.open('delete', '', {
+            duration: 5000,
+            verticalPosition: 'top'
+          });
+        // }
+      //);
+    }
   }
 
   onAdd() {
